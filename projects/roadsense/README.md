@@ -1,7 +1,7 @@
 # RoadSense — predictive traffic-awareness research
 
 **Status:** Concept documented; no implementation or validation yet.  
-**Concept:** Halo-inspired, glanceable awareness visualization of surrounding traffic.  
+**Concept:** Halo-inspired, glanceable awareness visualization of surrounding traffic, using a white ego vehicle and directional chevrons for nearby traffic in a compact, proposed upper-left windshield HUD.  
 **Initial test environment:** Recorded footage, synthetic driving scenarios, or simulation only.
 
 ## Vision
@@ -9,6 +9,14 @@
 Explore whether **camera + LiDAR sensor fusion**, tracking, and temporal reasoning can provide a coherent spatial view of nearby vehicles, including **uncertain estimates** for vehicles temporarily occluded by other traffic, while respecting the difference between direct observation and prediction.
 
 The goal is to study prediction and visualization, not to build a ready-to-use driver-assistance system.
+
+## Design documents
+
+- [HUD design — white ego vehicle, chevrons, observed/predicted/unknown](HUD.md)
+- [System architecture — passenger car versus truck/trailer](ARCHITECTURE.md)
+- [Sensor range, selection and staged prototype budget](SENSOR_PLAN.md)
+
+**Decision:** Cameras plus 3D LiDAR form the intended sensing architecture. Real-world 360° horizontal sensor field-of-view does **not** imply 360° unobstructed roadway visibility. Initial development uses synchronized dataset replay before hardware purchases.
 
 ## Core idea
 
