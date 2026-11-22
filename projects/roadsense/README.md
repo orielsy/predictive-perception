@@ -12,6 +12,9 @@ The goal is to study prediction and visualization, not to build a ready-to-use d
 
 ## Design documents
 
+- **[Continuation handoff — START HERE ON RESUME](HANDOFF.md)**
+- [Decision record — motion targets, affordability, sensor limits](DECISIONS.md)
+- [Miniature cardboard highway testbed](MINI_HIGHWAY.md)
 - [HUD design — white ego vehicle, chevrons, observed/predicted/unknown](HUD.md)
 - [System architecture — passenger car versus truck/trailer](ARCHITECTURE.md)
 - [Sensor range, selection and staged prototype budget](SENSOR_PLAN.md)
