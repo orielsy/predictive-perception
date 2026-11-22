@@ -9,6 +9,12 @@ This repository holds two independent concept-stage projects:
 | [SawGuard](projects/sawguard/README.md) | Explore early recognition of potentially hazardous hand movements around machine tools | Camera + mock saw area + graded audio cues + event logging |
 | [RoadSense](projects/roadsense/README.md) | Explore predictive situational awareness of nearby traffic, including temporarily occluded vehicles | Recorded/simulated synchronized camera + LiDAR data, sensor fusion, tracking, uncertainty visualization, and offline evaluation |
 
+## RoadSense research documents
+
+- [HUD: white ego vehicle + chevron awareness map](projects/roadsense/HUD.md)
+- [Passenger-car vs. truck/trailer sensing architecture](projects/roadsense/ARCHITECTURE.md)
+- [360° LiDAR range, purchase criteria and prototype budget](projects/roadsense/SENSOR_PLAN.md)
+
 ## Common hypothesis
 
 Sensors plus motion history may help detect or anticipate hazards **earlier** than waiting for direct contact or immediate proximity. The goal is to **measure** whether prediction provides useful, reliable lead time, not to assume it does.
@@ -40,6 +46,9 @@ projects/
     README.md
   roadsense/
     README.md
+    HUD.md
+    ARCHITECTURE.md
+    SENSOR_PLAN.md
 ```
 
 Project briefs capture the working hypothesis, first experiment, proposed architecture, evaluation plan, risks, and future directions. They are not product specifications or proof that the methods will work.
