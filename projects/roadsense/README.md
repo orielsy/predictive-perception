@@ -6,7 +6,7 @@
 
 ## Vision
 
-Explore whether cameras and temporal reasoning can provide a coherent view of nearby vehicles, including **uncertain estimates** for vehicles temporarily occluded by other traffic, while respecting the difference between direct observation and prediction.
+Explore whether **camera + LiDAR sensor fusion**, tracking, and temporal reasoning can provide a coherent spatial view of nearby vehicles, including **uncertain estimates** for vehicles temporarily occluded by other traffic, while respecting the difference between direct observation and prediction.
 
 The goal is to study prediction and visualization, not to build a ready-to-use driver-assistance system.
 
@@ -16,8 +16,8 @@ A driver cannot look in every direction simultaneously. An observed vehicle can 
 
 ## First demonstration
 
-1. Ingest **recorded or simulated** traffic footage with timestamped frames.
-2. Detect visible vehicles and assign tracks across frames.
+1. Ingest **synchronized camera and LiDAR recordings**, or synthetic scenarios containing both image frames and 3D ranging data. Physical LiDAR is **not necessary for the first software experiment**, but it is part of the intended design.
+2. Detect visible vehicles, associate their image observations with LiDAR depth/geometry where available, and assign tracks across frames.
 3. Present a simplified top-down / radar-like display inspired by situational-awareness UIs in games.
 4. Differentiate three classes of display information:
    - **Observed:** detected vehicle with a recent supporting observation.
@@ -29,31 +29,33 @@ A driver cannot look in every direction simultaneously. An observed vehicle can 
 ### Conceptual pipeline
 
 ```text
-Recorded multi-angle video / simulator
-  → synchronized frames + calibration
-  → vehicle detection
-  → multi-object tracking / motion model
+Synchronized camera + LiDAR recordings / multisensor simulator
+  → sensor timestamps + extrinsic/intrinsic calibration
+  → image-based vehicle detection + LiDAR ranging/3D measurements
+  → cross-sensor association and fusion
+  → multi-object tracking / relative position, motion and lane context
   → occlusion reasoning + uncertainty propagation
   → observed / predicted / unknown scene model
   → radar-like visualization + replay + evaluation log
 ```
 
-Initial camera count, sensor positions, and whether LiDAR is worthwhile remain research questions, not prerequisites.
+**LiDAR is a core sensor in the RoadSense concept**, alongside cameras. The research questions are which LiDAR hardware and mounting geometry to use, how to synchronize and calibrate both sensors, and what a fused system adds versus each sensor alone. The earliest milestone may use recorded or synthetic LiDAR instead of buying hardware.
 
 ## Suggested milestones
 
 | Milestone | Deliverable | Evidence |
 | --- | --- | --- |
-| A. Scenario runner | Recorded/synthetic traffic replay with timestamps | Repeatable clips |
-| B. Tracking | Detection + persistent track IDs for visible vehicles | Track overlays and accuracy report |
-| C. Occlusion | Temporary extrapolation with uncertainty and track expiry | Hidden/reappearing-vehicle scenarios |
-| D. HUD | Simple top-down presentation with distinct observed/predicted/unknown styling | Replayable screen recording |
-| E. Research evaluation | Compare extrapolations to held-out ground truth | Missed-track, false-track, latency and error measurements |
+| A. Scenario runner | Time-aligned recorded/synthetic camera + LiDAR replay | Reproducible dual-sensor clips |
+| B. Perception and fusion | Image vehicle detections plus associated LiDAR ranges / 3D positions | Spatial overlays and calibration checks |
+| C. Tracking and occlusion | Persistent track IDs, motion estimates, uncertainty, and track expiry | Hidden/reappearing-vehicle scenarios |
+| D. HUD | Top-down display with distinct observed/predicted/unknown styling | Replayable screen recording |
+| E. Research evaluation | Compare camera-only, LiDAR-only and fused tracking against ground truth | Missed-track, false-track, latency, lead time and spatial error measurements |
 
 ## Metrics and failure cases
 
 - Detection recall/precision and identity-switch frequency.
-- Position error for **directly observed** vehicles.
+- Position error for **directly observed** vehicles using cameras, LiDAR and fusion separately.
+- Camera–LiDAR temporal synchronization, calibration drift, sensor disagreement and field-of-view coverage.
 - Predicted position error against ground truth after 0.5 s, 1 s, 2 s, etc. of occlusion.
 - Calibration quality and how lane changes degrade extrapolation.
 - Probability calibration and premature/stale track persistence.
@@ -64,8 +66,9 @@ Any forward extrapolation is conditional; predictions never imply certainty abou
 
 ## Future investigation
 
-- Multi-camera calibration, radar or LiDAR fusion.
-- Lane-relative positioning and velocity estimates.
+- LiDAR hardware selection, placement, range limitations, weather behavior and power/bandwidth requirements.
+- Radar as an additional or alternative sensor, distinct from the core camera + LiDAR concept.
+- Lane-relative positioning and relative velocity estimates; potentially incorporate the time since the driver last checked mirrors as contextual research data.
 - Visualizing uncertainty with fading regions / envelopes rather than fixed ghost cars.
 - Human-factors study: does the visualization improve understanding in controlled, non-driving experiments, or increase distraction?
 - A compact embedded version using the Alta A311D, if performance and sensor support make sense.
@@ -82,4 +85,5 @@ See [repository safety policy](../../SAFETY.md).
 - Which representations distinguish observed, predicted, and unknown most unambiguously?
 - How quickly should an occluded track expire?
 - Is a first-person augmented view useful, or is a minimal top-down scene more legible?
-- Does extra sensing materially outperform simpler multi-camera tracking?
+- How much does **camera + LiDAR fusion** improve distance estimation, positioning, tracking continuity and confidence over camera-only or LiDAR-only baselines?
+- What mounting and calibration configuration provides useful coverage around a vehicle?
