@@ -38,6 +38,25 @@ Illustration only: with **20 m/s relative closing speed**, an object at 40 m has
 
 These devices are **not automotive safety-certified retrofit kits**. Weather, protective windows, vibration, power and mounting need separate analysis.
 
+## Low-cost miniature experiments (newly prioritized)
+
+The original sensor table below refers mainly to **full 3D traffic-research rigs**. Since we now propose a **cardboard miniature highway**, the first physical test can cost much less. The following are **indicative exploratory prices discussed in November 2026**, not freshly verified vendor quotations:
+
+| Experimental component | Indicative cost | Fit and limitation |
+| --- | --- | --- |
+| Cardboard road + toy cars + existing webcam | Minimal incremental cost | Recommended first physical geometry/tracking test; separate overhead camera for ground truth |
+| Very short-range ToF breakout (VL53-class) | ~$20 | Range/field of view too limited for 360° vehicles, but useful for learning |
+| 24 GHz presence/multi-target radar (LD2450/LD2451-type) | ~$10–40 module/basic accessories | May not detect toy cars; human-focused firmware may suppress them; does not imply radar-through-truck capability |
+| Budget 360° planar LiDAR | ~$70–110 for some entry examples | One 2D horizontal scan; useful if the scan plane intersects model cars |
+| Unitree L1-family 360° 3D LiDAR | ~$249–309 sensor listing | Lower-cost real 3D option; low-reflectivity range is far shorter than full-scale highway needs |
+| Unitree L2-class 3D LiDAR | ~$419 sensor listing | Higher point density than L1, still research-grade, not automotive protection |
+
+**Under $200** is a *possible allowance for a basic tabletop research experiment*, assuming existing Alta/computer, webcam and manual toy vehicles. It is **not** a promise to deliver a full 360° camera + 3D LiDAR + radar vehicle system for $200. Even a cheap sensor needs cables, mounting, power and integration time.
+
+A convenient, inexpensive 2D LiDAR may be a **good miniature-highway tool**, despite being inappropriate as the final 3D road sensor. Avoid buying any sensor until a specific replay or cardboard test needs it.
+
+See [Mini Highway](MINI_HIGHWAY.md) and [Decision Record](DECISIONS.md).
+
 ## Cost bands (planning allowances, not supplier quotes)
 
 | Stage | Rough hardware/data allowance | Purchases |
