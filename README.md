@@ -7,7 +7,7 @@ This repository holds two independent concept-stage projects:
 | Project | Purpose | First prototype |
 | --- | --- | --- |
 | [SawGuard](projects/sawguard/README.md) | Explore early recognition of potentially hazardous hand movements around machine tools | Camera + mock saw area + graded audio cues + event logging |
-| [RoadSense](projects/roadsense/README.md) | Explore predictive situational awareness of nearby traffic, including temporarily occluded vehicles | Recorded driving footage + tracking/uncertainty visualization + offline evaluation |
+| [RoadSense](projects/roadsense/README.md) | Explore predictive situational awareness of nearby traffic, including temporarily occluded vehicles | Recorded/simulated synchronized camera + LiDAR data, sensor fusion, tracking, uncertainty visualization, and offline evaluation |
 
 ## Common hypothesis
 
