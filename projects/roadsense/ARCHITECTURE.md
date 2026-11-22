@@ -79,6 +79,14 @@ The trailer fundamentally changes sensing: a cab-mounted 360° scanner cannot re
 4. Evaluate cyclists/motorcycles as well as passenger vehicles; measure false emptiness assertions.
 5. Consider purpose-built safety regulations and domain specialists before any operational testing.
 
+## Relative-motion tracking requirements (research targets)
+
+RoadSense prioritizes **ego-relative position and velocity**, not absolute highway speed. The owner selected **30 mph nominal differential** (~13.4 m/s) with **50–60 mph differential as stretch targets**. Proposed software-update goals are **10–20 Hz tracking** and **30–60 FPS HUD rendering**; none have been implemented, benchmarked or validated. Coverage and detection across the near-zero-radial-velocity case matter too (e.g., neighboring vehicle moving at the same speed).
+
+Do not assume co-moving highway traffic is inherently safe: stopped vehicles, oncoming traffic or a large same-direction differential create serious closing rates. Sensor field-of-view, correct time alignment, ego-motion compensation, tracking continuity and uncertainty handling remain essential. Validate higher differentials on recorded/full-scale synthetic data; the tabletop miniature cannot establish full-scale performance.
+
+The planned **[cardboard miniature highway](MINI_HIGHWAY.md)** can answer questions about relative geometry, occlusion and HUD interpretation before purchasing long-range sensing hardware.
+
 ## Workload partition
 
 | Stage | Practical research implementation |
