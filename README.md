@@ -14,6 +14,9 @@ This repository holds two independent concept-stage projects:
 - [HUD: white ego vehicle + chevron awareness map](projects/roadsense/HUD.md)
 - [Passenger-car vs. truck/trailer sensing architecture](projects/roadsense/ARCHITECTURE.md)
 - [360° LiDAR range, purchase criteria and prototype budget](projects/roadsense/SENSOR_PLAN.md)
+- [Low-cost miniature highway (cardboard + model cars)](projects/roadsense/MINI_HIGHWAY.md)
+- [Current RoadSense decision record](projects/roadsense/DECISIONS.md)
+- **[RoadSense handoff for later continuation](projects/roadsense/HANDOFF.md)**
 
 ## Common hypothesis
 
@@ -49,6 +52,9 @@ projects/
     HUD.md
     ARCHITECTURE.md
     SENSOR_PLAN.md
+    MINI_HIGHWAY.md
+    DECISIONS.md
+    HANDOFF.md
 ```
 
 Project briefs capture the working hypothesis, first experiment, proposed architecture, evaluation plan, risks, and future directions. They are not product specifications or proof that the methods will work.
